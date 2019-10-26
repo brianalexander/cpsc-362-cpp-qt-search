@@ -17,5 +17,5 @@ FileContentView::~FileContentView()
 
 void FileContentView::setText(QString fileContent) {
     qDebug() << "setting text";
-    ui->plainTextEdit->setPlainText(fileContent);
+    ui->textEdit->setText(fileContent);
 }

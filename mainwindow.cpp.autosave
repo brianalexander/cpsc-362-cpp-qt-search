@@ -48,6 +48,7 @@ MainWindow::~MainWindow()
 void MainWindow::handleSearchButtonClicked() {
     ui->lineEdit_2->setText(ui->lineEdit->text());
     ui->stackedWidget->setCurrentIndex(1);
+    if(searchThread.)
     emit forwardStartSearch(ui->lineEdit->text());
 
 }

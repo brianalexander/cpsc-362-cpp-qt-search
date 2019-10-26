@@ -94,7 +94,7 @@
           <item>
            <widget class="QPushButton" name="pushButton_2">
             <property name="text">
-             <string>Stop</string>
+             <string>Searching..</string>
             </property>
            </widget>
           </item>

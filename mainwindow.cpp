@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     SearchWorker *worker = new SearchWorker;
     worker->moveToThread(&searchThread);
     ui->setupUi(this);
+    ui->treeWidget->setSortingEnabled(true);
     ui->treeWidget->hideColumn(6);
 
     // start search when clicked.
@@ -24,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // change to search ui when clicked.
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::handleSearchButtonClicked);
+    connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::handleSearchButtonClicked);
     connect(ui->lineEdit, &QLineEdit::returnPressed, this, &MainWindow::handleSearchButtonClicked);
 
     // update ui when a match is found.
@@ -46,14 +48,21 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::handleSearchButtonClicked() {
+        while(true) {
+            if(ui->treeWidget->takeTopLevelItem(0) == nullptr) {
+                break;
+            }
+            delete ui->treeWidget->takeTopLevelItem(0);
+        }
+
+
     ui->lineEdit_2->setText(ui->lineEdit->text());
     ui->stackedWidget->setCurrentIndex(1);
     emit forwardStartSearch(ui->lineEdit->text());
-
 }
 
 void MainWindow::handleSearchFinished() {
-    qDebug() << "Finished";
+    ui->pushButton_2->setText(tr("Search"));
 }
 
 void MainWindow::onMatchFound(QTreeWidgetItem *qtwItem){

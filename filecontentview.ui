@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTextEdit" name="textEdit"/>
+    <widget class="QTextEdit" name="popup_text_box"/>
    </item>
   </layout>
  </widget>
